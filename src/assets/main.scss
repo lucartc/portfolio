@@ -4,10 +4,11 @@ $border_radius: 10px;
 $components_background: linear-gradient(90deg, #001166 0%, #001A99 100%);
 $portfolio_item_background: linear-gradient(90.17deg, #002266 0.14%, #003399 99.86%);
 $portfolio_item_control_background: linear-gradient(270deg, #0026E6 0%, #001EB3 100%);
+$default_shadow: 2px 2px 4px 0px rgba(0,0,0,0.3);
 $success_color: #48E862;
+$hover_filter: brightness(1.4);
 
 html{
-  padding: 0px 0px 50px 0px;
   width: 100vw;
   min-height: 100vh;
   font-family: helvetica;
@@ -25,11 +26,13 @@ body{
   width: 100%;
   min-height: 100vh;
   background-image: url('portfolio_illustration_final.svg');
-  background-position: 700px 200px;
+  background-position: 800px 150px;
   background-repeat: no-repeat;
+  background-size: 50%;
 }
 
 .content{
+  padding: 0px 0px 50px 0px;
   position: relative;
   z-index: 1;
   display: flex;
@@ -39,18 +42,23 @@ body{
 .content-header{
   display: flex;
   flex-direction: row;
-  height: 180px;
-  margin: 0px 100px 70px 100px;
+  margin: 60px 100px 100px 100px;
   align-items: center;
   gap: 80px;
 }
 
 .content-header-logo{
+  cursor: pointer;
   background-image: url('logo.svg');
-  width: 60px;
+  width: 50px;
   aspect-ratio: 1;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
+
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .content-header-menu{
@@ -63,13 +71,17 @@ body{
 
 .content-header-menu__item{
   text-decoration: none;
-  color: #ffffff;
-  font-size: 1.5rem;
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .content-header-dropdown{
   position: relative;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -145,9 +157,14 @@ body{
   background-color: $cta_color;
   border-radius: $border_radius;
   border: none;
+  box-shadow: $default_shadow;
+
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
-.content_right{
+.content__right{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,14 +172,15 @@ body{
 }
 
 .portfolio{
-  padding: 50px;
+  padding: 40px;
   background: $components_background;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   border-radius: $border_radius;
   max-width: 900px;
   box-sizing: border-box;
+  box-shadow: $default_shadow;
 }
 
 .portfolio-header{
@@ -172,13 +190,13 @@ body{
 }
 
 .portfolio-header__title{
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff
 }
 
 .portfolio-header__sub{
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff
 }
@@ -199,11 +217,12 @@ body{
 .portfolio-list-item{
   display: flex;
   flex-direction: column;
-  padding: 50px;
-  gap: 40px;
+  padding: 30px;
+  gap: 30px;
   box-sizing: border-box;
   background: $portfolio_item_background;
   border-radius: $border_radius;
+  box-shadow: $default_shadow;
 }
 
 .portfolio-list-item-info{
@@ -213,7 +232,7 @@ body{
 }
 
 .portfolio-list-item-info__title{
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
 }
@@ -224,23 +243,28 @@ body{
   gap: 20px;
 }
 
-.portfolio-list-item-info-main__image{
+.portfolio-list-item-info-main__icon{
+  padding: 10px;
+  box-sizing: border-box;
   height: 144px;
   aspect-ratio: 1;
   border-radius: $border_radius;
   background-color: #C599FF;
+  box-shadow: $default_shadow;
 }
 
 .portfolio-list-item-info-main__description{
   text-align: left;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  word-break: break-all;
   color: #ffffff;
 }
 
 .portfolio-list-item-controls{
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
 }
 
@@ -250,13 +274,18 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: 60px;
   aspect-ratio: 1;
   background: $portfolio_item_control_background;
+  box-shadow: $default_shadow;
+  
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .portfolio-list-item-controls-item__icon{
-  width: 40px;
+  width: 30px;
   aspect-ratio: 1;
 }
 
@@ -264,11 +293,11 @@ body{
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .input-group__label{
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #ffffff;
 }
 
@@ -279,6 +308,7 @@ body{
   color: #222222;
   border-radius: $border_radius;
   border: none;
+  box-shadow: $default_shadow;
 }
 
 .input-group__input_textarea{
@@ -289,13 +319,24 @@ body{
   border: none;
 }
 
+.input-group__input_select{
+  padding: 0px 0px 0px 20px;
+  height: 50px;
+  font-size: 1rem;
+  color: #222222;
+  border-radius: $border_radius;
+  border: none;
+  border-right: 20px solid transparent;
+  box-shadow: $default_shadow;
+}
+
 .about-me{
   display: flex;
   flex-direction: column;
   border-radius: $border_radius;
   background: $components_background;
-  gap: 40px;
-  padding: 50px;
+  gap: 30px;
+  padding: 40px;
   box-sizing: border-box;
   max-width: 700px;
 }
@@ -303,24 +344,24 @@ body{
 .about-me-header{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .about-me-header__title{
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #ffffff;
   font-weight: bold;
 }
 
 .about-me-header__sub{
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #ffffff;
   font-weight: bold;
 }
 
 .about-me-main{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -328,30 +369,38 @@ body{
   width: 144px;
   aspect-ratio: 1;
   border-radius: 50%;
-  margin: 0px 0px 20px 0px;
+  margin: 0px 40px 0px 0px;
   background-color: #C599FF;
+  box-shadow: $default_shadow;
 }
 
-.about-me-main__name{
+.about-me-main-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.about-me-main-info__name{
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ffffff;
-  margin: 0px 0px 20px 0px;
-}
-
-.about-me-main__exp_time{
-  font-size: 1.25rem;
   color: #ffffff;
   margin: 0px 0px 10px 0px;
 }
 
-.about-me-main__role{
+.about-me-main-info__exp_time{
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin: 0px 0px 5px 0px;
+}
+
+.about-me-main-info__role{
   font-size: 1.25rem;
   color: #ffffff;
 }
 
 .about-me__description{
   font-size: 1rem;
+  line-height: 1.5rem;
   color: #ffffff;
   text-align: start;
 }
@@ -363,7 +412,7 @@ body{
 }
 
 .about-me-stack__title{
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #ffffff;
 }
@@ -384,6 +433,7 @@ body{
   aspect-ratio: 1;
   background: $portfolio_item_control_background;
   border-radius: $border_radius;
+  box-shadow: $default_shadow;
 }
 
 .about-me-stack-list-item__logo{
@@ -399,26 +449,53 @@ body{
   color: #ffffff;
   border: none;
   border-radius: $border_radius;
+  box-shadow: $default_shadow;
+  
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .contact{
-  padding: 50px;
+  padding: 40px;
   max-width: 900px;
   background: $components_background;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   border-radius: $border_radius;
 }
 
 .contact__status{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   background-color: $success_color;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #222222;
   font-weight: bold;
-  height: 80px;
+  height: 60px;
   border: none;
   border-radius: $border_radius;
+  box-shadow: $default_shadow;
+  
+  &:after{
+    position: absolute;
+    font-size: 1.5rem;
+    content: '\00d7';
+    right: 50px;
+    color: #333333;
+
+    &:hover{
+      filter: $hover_filter;
+    }
+  }
+
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .contact-header{
@@ -428,13 +505,13 @@ body{
 }
 
 .contact-header__title{
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
 }
 
 .contact-header__sub{
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
 }
@@ -442,7 +519,7 @@ body{
 .contact-form{
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
 }
 
 .contact-form__sender-email{}
@@ -457,6 +534,11 @@ body{
   font-weight: bold;
   height: 80px;
   color: #ffffff;
+  box-shadow: $default_shadow;
+  
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .contact-controls{
@@ -466,7 +548,7 @@ body{
 }
 
 .contact-controls__title{
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #ffffff;
 }
@@ -487,6 +569,11 @@ body{
   aspect-ratio: 1;
   background: $portfolio_item_control_background;
   border-radius: $border_radius;
+  box-shadow: $default_shadow;
+
+  &:hover{
+    filter: $hover_filter;
+  }
 }
 
 .contact-controls-list-item__icon{
