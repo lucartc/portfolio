@@ -12,19 +12,19 @@
     })
 
     function has_github_link(){
-        return props.github_link != null
+        return props.github_link != null && props.github_link.length > 0
     }
 
     function has_live_link(){
-        return props.live_link != null
+        return props.live_link != null && props.github_link.length > 0
     }
 
     function has_play_store_link(){
-        return props.play_store_link != null
+        return props.play_store_link != null && props.github_link.length > 0
     }
 
     function has_chrome_web_store_link(){
-        return props.chrome_web_store_link != null
+        return props.chrome_web_store_link != null && props.github_link.length > 0
     }
 
 </script>
