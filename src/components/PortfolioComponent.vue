@@ -19,7 +19,7 @@
 
     function update_projects(){
         let data = {
-            tags: [tag_selector.value.value],
+            tags: tag_selector.value.value == '0' ? [] : [tag_selector.value.value],
             search_string: search_string.value.value
         }
         search_projects(data)
@@ -44,10 +44,6 @@
         })
         .then(data => data.json())
         .then(data => projects.value = data.projects)
-        
-        // search_projects({})
-        // .then(data => data.json())
-        // .then(data => projects.value = data.projects)
     })
 </script>
 
@@ -65,6 +61,7 @@
                 <div class="input-group">
                     <div class="input-group__label">Tag</div>
                     <select ref="tag_selector" @change="update_projects" type="text" class="input-group__input_select" placeholder="field content">
+                        <option value="0">Any</option>
                         <option v-for="tag in tags" :value="tag.id">{{ tag.name }}</option>
                     </select>
                 </div>
