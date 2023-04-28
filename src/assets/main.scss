@@ -42,7 +42,7 @@ body{
 .content-header{
   display: flex;
   flex-direction: row;
-  margin: 60px 100px 100px 100px;
+  margin: 40px 100px 80px 100px;
   align-items: center;
   gap: 80px;
 }
@@ -172,7 +172,7 @@ body{
 }
 
 .portfolio{
-  padding: 40px;
+  padding: 30px;
   background: $components_background;
   display: flex;
   flex-direction: column;
@@ -246,7 +246,7 @@ body{
 .portfolio-list-item-info-main__icon{
   padding: 10px;
   box-sizing: border-box;
-  height: 144px;
+  height: 100px;
   aspect-ratio: 1;
   border-radius: $border_radius;
   background-color: #C599FF;
@@ -303,7 +303,7 @@ body{
 
 .input-group__input{
   padding: 0px 0px 0px 20px;
-  height: 50px;
+  height: 40px;
   font-size: 1rem;
   color: #222222;
   border-radius: $border_radius;
@@ -321,7 +321,7 @@ body{
 
 .input-group__input_select{
   padding: 0px 0px 0px 20px;
-  height: 50px;
+  height: 40px;
   font-size: 1rem;
   color: #222222;
   border-radius: $border_radius;
@@ -336,7 +336,7 @@ body{
   border-radius: $border_radius;
   background: $components_background;
   gap: 30px;
-  padding: 40px;
+  padding: 30px;
   box-sizing: border-box;
   max-width: 700px;
 }
@@ -442,9 +442,9 @@ body{
 }
 
 .about-me__cta{
-  height: 80px;
+  height: 60px;
   background-color: $cta_color;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
   border: none;
@@ -457,7 +457,7 @@ body{
 }
 
 .contact{
-  padding: 40px;
+  padding: 30px;
   max-width: 900px;
   background: $components_background;
   display: flex;
@@ -532,7 +532,7 @@ body{
   border-radius: $border_radius;
   font-size: 1.5rem;
   font-weight: bold;
-  height: 80px;
+  height: 60px;
   color: #ffffff;
   box-shadow: $default_shadow;
   

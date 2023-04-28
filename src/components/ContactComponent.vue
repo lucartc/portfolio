@@ -1,7 +1,13 @@
 <script setup>
     import { ref, onMounted } from 'vue'
+    import { send_email } from '../helpers/api.js'
+    import StatusComponent from './StatusComponent.vue'
 
     const self = ref()
+    const status = ref()
+    const sender_email = ref()
+    const message = ref()
+    const status_message = ref()
 
     function show(){
         self.value.style.display = 'flex'
@@ -11,6 +17,32 @@
         self.value.style.display = 'none'
     }
 
+    function show_status(){
+        status.value.show()
+    }
+
+    function clear_form(){
+        sender_email.value.value = null
+        message.value.value = null
+    }
+
+    function send_message(){
+        let content = {
+            sender_email: sender_email.value.value,
+            message: message.value.value
+        }
+
+        send_email(content)
+        .then(data => {
+            if(data.ok){
+                status_message.value = 'Your message was sent!'
+                clear_form()
+            }else{
+                status_message.value = 'Email could not be sent. Please, try again.'
+            }
+            status.value.show()
+        })
+    }
 
     defineExpose({
         show,
@@ -24,7 +56,7 @@
 
 <template>
         <div class="contact" ref="self">
-            <button class="contact__status">Your message was sent!</button>
+            <StatusComponent :message="status_message" ref="status"></StatusComponent>
             <div class="contact-header">
                 <div class="contact-header__title">Contact me</div>
                 <div class="contact-header__sub">Send me a message!</div>
@@ -33,16 +65,16 @@
                 <div class="contact-form__sender-email">
                     <div class="input-group">
                         <label class="input-group__label">Email</label>
-                        <input type="text" class="input-group__input">
+                        <input ref="sender_email" type="text" class="input-group__input">
                     </div>
                 </div>
                 <div class="contact-form__message">
                     <div class="input-group">
                         <label class="input-group__label">Message</label>
-                        <textarea rows="8" cols="10" type="text" class="input-group__input_textarea"></textarea>
+                        <textarea ref="message" rows="8" cols="10" type="text" class="input-group__input_textarea"></textarea>
                     </div>
                 </div>
-                <button class="contact-form__submit">Send message</button>
+                <button @click="send_message" class="contact-form__submit">Send message</button>
             </div>
             <div class="contact-controls">
                 <div class="contact-controls__title">...Or contact me through these</div>
