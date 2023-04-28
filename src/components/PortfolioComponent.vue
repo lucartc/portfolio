@@ -39,7 +39,7 @@
         .then(data => {console.log('data: ',data); return data})
         .then(data => {tags.value = data.tags; return data})
         .then(data => {
-            data.tags = data.tags.splice(1,0,{id: 0, name: 'Any'})
+            data.tags.splice(1,0,{id: 0, name: 'Any'})
             let message = {tags: [data.tags[0].id]}
             return search_projects(message)
         })
