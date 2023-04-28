@@ -39,16 +39,16 @@
         </div>
     </div>
     <div class="portfolio-list-item-controls">
-        <a v-if="has_github_link()" target="_blank" class="portfolio-list-item-controls-item" :href="props.github_link">
+        <a v-if="has_github_link" target="_blank" class="portfolio-list-item-controls-item" :href="props.github_link">
             <img class="portfolio-list-item-controls-item__icon" src="../assets/github.svg" alt="">
         </a>
-        <a v-if="has_live_link()" target="_blank" class="portfolio-list-item-controls-item" :href="props.live_link">
+        <a v-if="has_live_link" target="_blank" class="portfolio-list-item-controls-item" :href="props.live_link">
             <img class="portfolio-list-item-controls-item__icon" src="../assets/live.svg" alt="">
         </a>
-        <a v-if="has_play_store_link()" target="_blank" class="portfolio-list-item-controls-item" :href="props.play_store_link">
+        <a v-if="has_play_store_link" target="_blank" class="portfolio-list-item-controls-item" :href="props.play_store_link">
             <img class="portfolio-list-item-controls-item__icon" src="../assets/play_store.svg" alt="">
         </a>
-        <a v-if="has_chrome_web_store_link()" target="_blank" class="portfolio-list-item-controls-item" :href="props.chrome_web_store_link">
+        <a v-if="has_chrome_web_store_link" target="_blank" class="portfolio-list-item-controls-item" :href="props.chrome_web_store_link">
             <img class="portfolio-list-item-controls-item__icon" src="../assets/chrome.svg" alt="">
         </a>
     </div>
