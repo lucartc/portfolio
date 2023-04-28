@@ -36,7 +36,6 @@
         hide()
         get_tags()
         .then(data => data.json())
-        .then(data => {console.log('data: ',data); return data})
         .then(data => {tags.value = data.tags; return data})
         .then(data => {
             data.tags.splice(1,0,{id: 0, name: 'Any'})
