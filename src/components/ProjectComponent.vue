@@ -16,15 +16,15 @@
     }
 
     function has_live_link(){
-        return props.live_link != null && props.github_link.length > 0
+        return props.live_link != null && props.live_link.length > 0
     }
 
     function has_play_store_link(){
-        return props.play_store_link != null && props.github_link.length > 0
+        return props.play_store_link != null && props.play_store_link.length > 0
     }
 
     function has_chrome_web_store_link(){
-        return props.chrome_web_store_link != null && props.github_link.length > 0
+        return props.chrome_web_store_link != null && props.chrome_web_store_link.length > 0
     }
 
 </script>
