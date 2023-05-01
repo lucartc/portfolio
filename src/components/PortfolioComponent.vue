@@ -64,15 +64,6 @@
                         <option v-for="tag in tags" :value="tag.id">{{ tag.name }}</option>
                     </select>
                 </div>
-                <div class="input-group">
-                    <div class="input-group__label">Order by</div>
-                    <select type="text" class="input-group__input_select" placeholder="field content">
-                        <option value="1">Name(a-z)</option>
-                        <option value="2">Name(z-a)</option>
-                        <option value="3">Oldest first</option>
-                        <option value="4">Newest first</option>
-                    </select>
-                </div>
             </div>
             <div class="portfolio-list">
                 <ProjectComponent v-for="project in projects"
