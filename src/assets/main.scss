@@ -1,9 +1,13 @@
-$background: linear-gradient(90deg, #290099, 50%, #8B33FF 100%);
+@use 'gallery';
+
+//$background: linear-gradient(90deg, hsl(290, 100%, 30%), 50%, hsl(340, 100%, 75%) 100%);
+$background: linear-gradient(90deg, hsl(266, 50%, 55%), 50%, hsl(290, 60%, 30%) 100%);
 $cta_color: #FF3377;
 $border_radius: 10px;
-$components_background: linear-gradient(90deg, #001166 0%, #001A99 100%);
-$portfolio_item_background: linear-gradient(90.17deg, #002266 0.14%, #003399 99.86%);
-$portfolio_item_control_background: linear-gradient(270deg, #0026E6 0%, #001EB3 100%);
+//$components_background: linear-gradient(90deg, #001166 0%, #001A99 100%);
+$components_background: linear-gradient(90deg,hsl(258, 100%, 40%) 0%,hsl(269, 100%, 30%) 100%);
+$portfolio_item_background: linear-gradient(90.17deg, hsl(255, 100%, 20%) 0.14%, hsl(255, 100%, 30%) 99.86%);
+$portfolio_item_control_background: linear-gradient(270deg, hsl(300, 100%, 45%) 0%, hsl(300, 100%, 35%) 100%);
 $default_shadow: 2px 2px 4px 0px rgba(0,0,0,0.3);
 $success_color: #48E862;
 $hover_filter: brightness(1.4);
@@ -19,10 +23,10 @@ body{
   margin: 0px;
   width: 100vw;
   min-height: 100vh;
-  background: $background;
 }
 
 #app{
+  background: $background;
   width: 100%;
   min-height: 100vh;
   background-image: url('portfolio_illustration_final.svg');
@@ -209,20 +213,26 @@ body{
 }
 
 .portfolio-list{
+  padding: 0px 20px 0px 0px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .portfolio-list-item{
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 20px;
   gap: 30px;
+  max-width: 250px;
   box-sizing: border-box;
   background: $portfolio_item_background;
   border-radius: $border_radius;
   box-shadow: $default_shadow;
+  justify-content: space-between;
 }
 
 .portfolio-list-item-info{
@@ -232,21 +242,23 @@ body{
 }
 
 .portfolio-list-item-info__title{
-  font-size: 1.5rem;
+  text-align: center;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #ffffff;
 }
 
 .portfolio-list-item-info-main{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
+  padding: 0px 0px 0px 0px;
+  box-sizing: border-box;
 }
 
 .portfolio-list-item-info-main__icon{
   padding: 10px;
   box-sizing: border-box;
-  height: 100px;
   aspect-ratio: 1;
   border-radius: $border_radius;
   background-color: #C599FF;
@@ -255,13 +267,14 @@ body{
 
 .portfolio-list-item-info-main__description{
   text-align: left;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.5rem;
   word-break: break-all;
   color: #ffffff;
 }
 
 .portfolio-list-item-controls{
+  justify-self: end;
   display: flex;
   flex-direction: row;
   gap: 15px;
