@@ -4,7 +4,8 @@
     const status = ref()
 
     const props = defineProps({
-        message: {type: String, default: 'Status message'}
+        message: {type: String, default: 'Status message'},
+        success: {type: Boolean, default: false}
     })
 
     function show(){
@@ -13,6 +14,14 @@
 
     function hide(){
         status.value.style.display = 'none'
+    }
+
+    function message_status(){
+        if(props.success){
+            return 'status__success'
+        }else{
+            return 'status__error'
+        }
     }
 
     onMounted(() => {
@@ -25,5 +34,5 @@
 </script>
 
 <template>
-    <button @click="hide" ref="status" class="contact__status">{{ props.message }}</button>
+    <button @click="hide" ref="status" :class="message_status()">{{ props.message }}</button>
 </template>

@@ -1,11 +1,11 @@
-<script setup>
-    const emit = defineEmits(['about_me'])
-</script>
+<script setup></script>
 
 <template>
-    <div class="hero-section">
-        <p class="hero-section__main">Beautiful,<br>Clean &<br>Functional<br>applications</p>
-        <p class="hero-section__sub">Web & mobile developer</p>
-        <button class="hero-section__cta" @click="emit('about_me')">Check my profile</button>
+    <div class="hero">
+        <div class="hero__left-column">
+            <p class="hero-left-column__title">Beautiful,<br>Clean &<br>Functional<br>applications</p>
+            <p class="hero-left-column__subtitle">Web & mobile developer</p>
+            <a href="#about_me" class="hero-left-column__call-to-action">Check my profile</a>
+        </div>
     </div>
 </template>

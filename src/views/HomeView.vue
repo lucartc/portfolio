@@ -44,25 +44,12 @@
         @portfolio="show_portfolio"
         @home="home"
         ></NavComponent>
-        <div class="content-sides">
-            <div class="content__left">
-                <HeroComponent
-                @about_me="show_about_me"
-                ></HeroComponent>
-            </div>
-            <div class="content__right">
-                <ContactComponent
-                ref="contact_me_component"
-                ></ContactComponent>
-                <AboutMeComponent
-                ref="about_me_component"
-                @portfolio="show_portfolio"
-                ></AboutMeComponent>
-                <PortfolioComponent
-                ref="portfolio_component"
-                ></PortfolioComponent>
-            </div>
-        </div>
+        <HeroComponent
+        @about_me="show_about_me"
+        ></HeroComponent>
+        <AboutMeComponent id="about_me"></AboutMeComponent>
+        <PortfolioComponent id="portfolio"></PortfolioComponent>
+        <ContactComponent id="contact_me"></ContactComponent>
     </div>
 </template>
 

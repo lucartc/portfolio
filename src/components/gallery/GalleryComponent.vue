@@ -1,20 +1,24 @@
 <script setup>
-    import { ref,onMounted } from 'vue'
-    import { search_projects } from '@/helpers/api';
+    import { ref } from 'vue'
     import GalleryGroupComponent from './GalleryGroupComponent.vue';
 
-    const projects = ref()
+    const current_projects = ref()
     const presentation_groups = ref()
+
+    function update_projects(projects){
+        current_projects.value = projects
+        generate_presentation_groups()
+    }
 
     function generate_presentation_groups(){
         presentation_groups.value = []
-        let available_projects = projects.value
-        let project_quantity = projects.value.length
+        let available_projects = current_projects.value
+        let project_quantity = current_projects.value.length
         let gallery_panels = 0
         let group_sequence = []
 
         while(gallery_panels < project_quantity){
-            let new_group_type = Math.floor(Math.random() * 3)
+            let new_group_type = Math.floor(Math.random() * 4)
             let last_group_type = group_sequence[group_sequence.length-1]
 
             if(last_group_type != new_group_type){
@@ -63,211 +67,13 @@
         }
     }
 
-    onMounted(() => {
-        search_projects()
-        .then(data => data.json())
-        .then(data => {
-            projects.value = data.projects
-            generate_presentation_groups()
-        })
+    defineExpose({
+        update_projects
     })
 
 </script>
 <template>
-    <GalleryGroupComponent v-for="group in presentation_groups" v-bind="group"></GalleryGroupComponent>
-    <!-- <div class="gallery-content_one">
-        <div class="column-one">
-            <div class="row-one">
-                <div class="gallery-content__loading-panel_one">
-                    <div class="gallery-content__content-panel_one">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-content__loading-panel_two">
-                    <div class="gallery-content__content-panel_two">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row-two">
-                <div class="gallery-content__loading-panel_three">
-                    <div class="gallery-content__content-panel_three">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-content__loading-panel_four">
-                    <div class="gallery-content__content-panel_four">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-two">
-            <div class="gallery-content__loading-panel_five">
-                <div class="gallery-content__content-panel_five">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div>
+        <GalleryGroupComponent v-for="group in presentation_groups" v-bind="group"></GalleryGroupComponent>
     </div>
-    <div class="gallery-content_two">
-        <div class="column-one">
-            <div class="gallery-content__loading-panel_one">
-                <div class="gallery-content__content-panel_one">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-two">
-            <div class="gallery-content__loading-panel_two">
-                <div class="gallery-content__content-panel_two">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-content__loading-panel_three">
-                <div class="gallery-content__content-panel_three">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-three">
-            <div class="row-one">
-                <div class="gallery-content__loading-panel_four">
-                    <div class="gallery-content__content-panel_four">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-content__loading-panel_five">
-                    <div class="gallery-content__content-panel_five">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row-two">
-                <div class="gallery-content__loading-panel_six">
-                    <div class="gallery-content__content-panel_six">
-                        <label class="title">Project title</label>
-                        <div class="links">
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                            <div class="links__item"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="gallery-content_three">
-        <div class="column-one">
-            <div class="gallery-content__loading-panel_one">
-                <div class="gallery-content__content-panel_one">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-two">
-            <div class="gallery-content__loading-panel_two">
-                <div class="gallery-content__content-panel_two">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-content__loading-panel_three">
-                <div class="gallery-content__content-panel_three">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-three">
-            <div class="gallery-content__loading-panel_four">
-                <div class="gallery-content__content-panel_four">
-                    <label class="title">Project title</label>
-                    <div class="links">
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                        <div class="links__item"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </template>
