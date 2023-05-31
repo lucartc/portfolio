@@ -651,6 +651,11 @@ body{
 }
 
 @media screen and (max-width: 1200px){
+  .about-me, .my-projects, .contact-me{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
   .about-me-content__card{
     flex-wrap: wrap;
   }
@@ -682,19 +687,9 @@ body{
 }
 
 @media screen and (max-width: 950px){
-  .about-me{
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-
-  .my-projects{
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-
-  .contact-me{
-    padding-left: 100px;
-    padding-right: 100px;
+  .about-me, .my-projects, .contact-me{
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .hero{

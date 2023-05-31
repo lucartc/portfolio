@@ -72,6 +72,10 @@
                     <img src="../assets/vue.svg" alt="Vue JS" class="my-projects-content-other-tools-list-item__icon">
                 </div>
                 <div class="my-projects-content-other-tools-list__item">
+                    <div class="tooltip">Tailwind CSS</div>
+                    <img src="../assets/tailwind.svg" alt="Tailwind CSS" class="my-projects-content-other-tools-list-item__icon">
+                </div>
+                <div class="my-projects-content-other-tools-list__item">
                     <div class="tooltip">Android</div>
                     <img src="../assets/android.svg" alt="Android" class="my-projects-content-other-tools-list-item__icon">
                 </div>

@@ -1,9 +1,14 @@
 <script setup>
+    import { computed } from 'vue';
 
     const props = defineProps({
         panel: {type: Number},
         project: {type: Object},
         image: {type: String}
+    })
+
+    const has_project_loaded = computed(() => {
+        return props.project != undefined
     })
 
     function should_show_github_link(){
@@ -68,6 +73,12 @@
                 <a v-if="should_show_chrome_link()" class="links__item_chrome" :href="project.chrome_web_store_link">
                     <img v-if="should_show_chrome_link()" src="../../assets/chrome.svg" class="links-item__icon">
                 </a>
+            </div>
+            <div v-if="has_project_loaded" class="description">
+                {{ project.description }}
+            </div>
+            <div v-if="has_project_loaded" class="tags">
+                <div class="tag_item" v-for="tag in project.tags">{{ tag.name }}</div>
             </div>
         </div>
     </div>
