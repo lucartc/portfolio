@@ -8,27 +8,27 @@
     })
 
     const has_project_loaded = computed(() => {
-        return props.project != undefined
+        return props.project
     })
 
     function should_show_github_link(){
-        return props.project != undefined && props.project.github_link != undefined && props.project.github_link != ''
+        return props.project && props.project.github_link && props.project.github_link
     }
 
     function should_show_live_link(){
-        return props.project != undefined && props.project.live_link != undefined && props.project.live_link != ''
+        return props.project && props.project.live_link && props.project.live_link
     }
 
     function should_show_play_store_link(){
-        return props.project != undefined && props.project.play_store_link != undefined && props.project.play_store_link != ''
+        return props.project && props.project.play_store_link && props.project.play_store_link
     }
 
     function should_show_chrome_link(){
-        return props.project != undefined && props.project.chrome_link != undefined && props.project.chrome_link != ''
+        return props.project && props.project.chrome_link && props.project.chrome_link
     }
 
     function panel_animation(){
-        return props.project != undefined ? 'loading' : 'none'
+        return props.project ? 'loading' : 'none'
     }
 
     function panel_number_string(){
@@ -53,13 +53,12 @@
     const emit = defineEmits([
         'show_project'
     ])
-
 </script>
 
 <template>
-    <div @click="emit('show_project',project)" :class="'gallery-content__loading-panel_'+panel_number_string()" :style="{animation: panel_animation(), backgroundImage: project != undefined ? 'url('+image+')' : 'none'}">
+    <div @click="emit('show_project',project)" :class="'gallery-content__loading-panel_'+panel_number_string()" :style="{animation: panel_animation(), backgroundImage: project ? 'url('+image+')' : 'none'}">
         <div :class="'gallery-content__content-panel_'+panel_number_string()">
-            <label class="title">{{ project != undefined ? project.title : '' }}</label>
+            <label class="title">{{ project ? project.title : '' }}</label>
             <div class="links">
                 <a v-if="should_show_github_link()" class="links__item_github" :href="project.github_link">
                     <img v-if="should_show_github_link()" src="../../assets/github.svg" class="links-item__icon">
