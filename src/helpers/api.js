@@ -1,5 +1,7 @@
+const host = 'http://api.portfolio.jlucartc.tech'
+
 function search_projects(message){
-    return fetch('http://api.portfolio.jlucartc.tech/search_projects',{
+    return fetch(host+'/search_projects',{
         method: 'POST',
         body: JSON.stringify(message),
         headers: {'Content-Type': 'application/json'}
@@ -7,7 +9,7 @@ function search_projects(message){
 }
 
 function send_email(message){
-    return fetch('http://api.portfolio.jlucartc.tech/send_email',{
+    return fetch(host+'/send_email',{
         method: 'POST',
         body: JSON.stringify(message),
         headers: {'Content-Type': 'application/json'}
@@ -15,7 +17,7 @@ function send_email(message){
 }
 
 function get_tags(){
-    return fetch('http://api.portfolio.jlucartc.tech/get_tags',{method: 'GET'})
+    return fetch(host+'/get_tags',{method: 'GET'})
 }
 
 export {
