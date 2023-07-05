@@ -18,7 +18,7 @@
     }
 
     function show_dialog(project){
-        current_gallery_item.value = project.icon
+        current_gallery_item.value = project.gallery[0].path
         dialog_project.value = project
         let body = document.querySelector('body')
         body.style.overflowY = 'hidden'
@@ -96,11 +96,11 @@
 <template>
     <div class="flex flex-row flex-wrap gap-[20px] w-full min-w-full max-w-full mb-[120px]">
         <div class="rounded-lg flex flex-row w-[calc((100%-4*20px)/5)] min-w-[calc((100%-4*20px)/5)] max-w-[calc((100%-4*20px)/5)] aspect-[3/4] drop-shadow-lg relative" v-for="project in current_projects">
-            <img class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.portrait">
+            <img class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display">
             <div class="flex opacity-0 hover:opacity-100 hover:backdrop-brightness-[20%] flex-col gap-6 h-full min-h-full max-h-full w-full min-w-full max-w-full p-4 box-border z-[1]">
                 <div class="flex flex-col gap-3">
                     <label class="text-lg font-bold text-white">{{ project.title }}</label>
-                    <div class="flex flex-row gap-2">
+                    <div class="flex flex-row gap-3">
                         <a target="_blank" v-if="project.github_link" :href="project.github_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
                             <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/github.svg'">
                         </a>
@@ -108,7 +108,7 @@
                             <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/live.svg'">
                         </a>
                         <a target="_blank" v-if="project.play_store_link" :href="project.play_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                            <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/play_store.svg'">
+                            <img class="w-[55%] min-w-[55%] max-w-[55%]" :src="'/src/assets/play_store.svg'">
                         </a>
                         <a target="_blank" v-if="project.chrome_web_store_link" :href="project.chrome_web_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
                             <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/chrome.svg'">
@@ -122,10 +122,10 @@
                 <div @click="show_dialog(project)" class="mt-auto mb-3 hover:brightness-125 whitespace-nowrap text-lg flex flex-row justify-center items-center bg-tag-background min-w-[30%] px-4 py-2 box-border max-w-[100%] rounded-lg drop-shadow-md text-white">See more</div>
             </div>
         </div>
-        <dialog v-if="dialog_project" :class="[dialog ? 'flex' : 'hidden','overflow-y-auto','flex-col','z-[10]','bg-transparent','backdrop-brightness-50','backdrop-blur-sm','min-w-full','min-h-full','fixed','top-0','max-h-full','p-10']">
-            <div class="flex flex-col min-w-full max-w-full gap-3 p-10 box-border items-center">
+        <dialog v-if="dialog_project" :class="[dialog ? 'flex' : 'hidden','overflow-y-auto','flex-col','z-[10]','bg-transparent','backdrop-brightness-50','backdrop-blur-sm','min-w-full','min-h-full','fixed','top-0','max-h-full']">
+            <div class="flex flex-col min-w-full max-w-full gap-3 box-border items-center">
                 <div class="flex flex-col gap-10 max-w-[70%] min-w-[70%] bg-default-background p-10 rounded-lg drop-shadow-lg relative">
-                    <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-3">
                         <label class="text-4xl font-bold text-white">{{ dialog_project.title }}</label>
                         <div class="flex flex-col">
                             <a target="_blank" v-if="dialog_project.github_link" :href="dialog_project.github_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
@@ -152,24 +152,14 @@
                         </div>
                     </div>
                     <div class="flex flex-col w-full min-w-full max-w-full gap-4">
-                        <label class="text-white text-2xl font-bold">Gallery</label>
-                        <div class="flex flex-row gap-3 min-w-full max-w-full aspect-[4/1]">
-                            <div class="min-h-full max-h-full basis-[10%] p-3 pl-0 box-border flex flex-col gap-3 overflow-y-scroll snap-y">
-                                <div @click="change_displayed_gallery_item(dialog_project.icon)" class="min-w-full max-w-full aspect-square bg-gray-700 snap-start rounded-lg">
-                                    <img class="min-h-full min-w-full object-contain rounded-lg" :src="dialog_project.icon" alt="">
-                                </div>
-                                <div @click="change_displayed_gallery_item(dialog_project.desktop)" class="w-full min-w-full max-w-full aspect-square bg-gray-700 snap-start rounded-lg">
-                                    <img class="h-full min-h-full min-w-full object-contain rounded-lg" :src="dialog_project.desktop" alt="">
-                                </div>
-                                <div @click="change_displayed_gallery_item(dialog_project.portrait)" class="w-full min-w-full max-w-full aspect-square bg-gray-700 snap-start rounded-lg">
-                                    <img class="h-full min-h-full min-w-full object-contain rounded-lg" :src="dialog_project.portrait" alt="">
-                                </div>
-                                <div @click="change_displayed_gallery_item(dialog_project.design_sheet)" class="w-full min-w-full max-w-full aspect-square bg-gray-700 snap-start rounded-lg">
-                                    <img class="h-full min-h-full min-w-full object-contain rounded-lg" :src="dialog_project.design_sheet" alt="">
+                        <div class="flex flex-row gap-3 min-w-full max-w-full aspect-[3/1]">
+                            <div class="h-full min-h-full max-h-full basis-[10%] p-3 box-border flex flex-col items-center gap-3 overflow-y-scroll snap-y rounded-lg bg-[#101010]">
+                                <div v-for="image in dialog_project.gallery" @click="change_displayed_gallery_item(image.path)" class="flex flex-row justify-center w-full min-w-full max-w-full aspect-square bg-[#202020] snap-start rounded-lg drop-shadow-lg">
+                                    <img class="min-h-full min-w-full object-contain rounded-lg" :src="image.path" alt="">
                                 </div>
                             </div>
-                            <div class="flex flex-row justify-center items-center h-full min-h-full max-h-full basis-[90%] bg-gray-700 drop-shadow-lg rounded-lg">
-                                <img :src="current_gallery_item" class="h-full min-h-full max-h-full w-full min-w-full max-w-full object-contain">
+                            <div class="flex flex-row justify-center items-center h-full min-h-full max-h-full basis-[90%] bg-[#202020] drop-shadow-lg rounded-lg">
+                                <img v-if="dialog_project.gallery.length" :src="current_gallery_item" class="h-full min-h-full max-h-full w-full min-w-full max-w-full object-contain">
                             </div>
                         </div>
                     </div>
