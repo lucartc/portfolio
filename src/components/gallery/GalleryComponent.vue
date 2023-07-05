@@ -102,16 +102,16 @@
                     <label class="text-lg font-bold text-white">{{ project.title }}</label>
                     <div class="flex flex-row gap-3">
                         <a target="_blank" v-if="project.github_link" :href="project.github_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                            <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/github.svg'">
+                            <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/github.svg">
                         </a>
                         <a target="_blank" v-if="project.live_link" :href="project.live_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                            <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/live.svg'">
+                            <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/live.svg">
                         </a>
                         <a target="_blank" v-if="project.play_store_link" :href="project.play_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                            <img class="w-[55%] min-w-[55%] max-w-[55%]" :src="'/src/assets/play_store.svg'">
+                            <img class="w-[55%] min-w-[55%] max-w-[55%]" src="../../assets/play_store.svg">
                         </a>
                         <a target="_blank" v-if="project.chrome_web_store_link" :href="project.chrome_web_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                            <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/chrome.svg'">
+                            <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/chrome.svg">
                         </a>
                     </div>
                 </div>
@@ -129,16 +129,16 @@
                         <label class="text-4xl font-bold text-white">{{ dialog_project.title }}</label>
                         <div class="flex flex-col">
                             <a target="_blank" v-if="dialog_project.github_link" :href="dialog_project.github_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                                <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/github.svg'">
+                                <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/github.svg">
                             </a>
                             <a target="_blank" v-if="dialog_project.live_link" :href="dialog_project.live_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                                <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/live.svg'">
+                                <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/live.svg">
                             </a>
                             <a target="_blank" v-if="dialog_project.play_store_link" :href="dialog_project.play_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                                <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/play_store.svg'">
+                                <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/play_store.svg">
                             </a>
                             <a target="_blank" v-if="dialog_project.chrome_web_store_link" :href="dialog_project.chrome_web_store_link" class="hover:brightness-125 flex flex-row justify-center items-center rounded-[100%] w-[40px] aspect-square bg-links-color drop-shadow-md">
-                                <img class="w-[60%] min-w-[60%] max-w-[60%]" :src="'/src/assets/chrome.svg'">
+                                <img class="w-[60%] min-w-[60%] max-w-[60%]" src="../../assets/chrome.svg">
                             </a>
                         </div>
                     </div>
