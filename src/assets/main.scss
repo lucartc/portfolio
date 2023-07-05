@@ -168,7 +168,7 @@ body{
 }
 
 .hero{
-  padding: 150px 0px 0px 0px;
+  padding: 80px 0px 0px 0px;
   box-sizing: border-box;
   min-height: 1200px;
   display: flex;
@@ -176,7 +176,7 @@ body{
   flex-wrap: wrap;
   background-image: url('portfolio_illustration_final.svg');
   background-repeat: no-repeat;
-  background-position: 80% 50%;
+  background-position: 80% 35%;
   background-origin: border-box;
   background-size: 55%;
 
@@ -185,31 +185,38 @@ body{
     box-sizing: border-box;
     max-width: 550px;
     min-width: 550px;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
 
     .hero-left-column__title{
       text-align: start;
-      font-size: 5rem;
+      font-size: 4.5rem;
       font-weight: bold;
-      margin: 0px 0px 40px 0px;
+      line-height: 7rem;
+      margin: 0px 0px 20px 0px;
       color: #ffffff;
     }
     .hero-left-column__subtitle{
       text-align: start;
       font-size: 2rem;
-      font-weight: bold;
       white-space: nowrap;
       margin: 0px 0px 80px 0px;
       color: #ffffff;
     }
 
     .hero-left-column__call-to-action{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       padding: 0px 40px 0px 40px;
       height: 80px;
       font-size: 2rem;
       font-weight: bold;
       color: #ffffff;
       background-color: $cta_color;
+      backdrop-filter: sepia(90%);
       border-radius: $default_border_radius;
       border: none;
       box-shadow: $default_shadow;
@@ -226,7 +233,7 @@ body{
 .about-me{
   display: flex;
   flex-direction: column;
-  margin: 240px 0px 0px 0px;
+  margin: 120px 0px 0px 0px;
   padding: 0px 200px 0px 200px;
   gap: 40px;
   
