@@ -14,21 +14,43 @@
             search_string: search_string.value.value
         }
         search_projects(message)
-        .then(data => data.json())
-        .then(data => gallery.value.update_projects(data.projects) )
+        .then(data => {
+            if(data.ok){
+                return data.json()
+            }else{
+                return null
+            }
+        })
+        .then(data => { if(data) gallery.value.update_projects(data.projects) })
     }
 
     onMounted(() => {
         get_tags()
-        .then(data => data.json())
         .then(data => {
-            data.tags.splice(1,0,{id: 0, name: 'Any'})
-            tags.value = data.tags
-            let message = {tags: [data.tags[0].id]}
-            return search_projects(message)
+            if(data.ok){
+                return data.json()
+            }else{
+                return null
+            }
         })
-        .then(data => data.json())
-        .then(data => gallery.value.update_projects(data.projects) )
+        .then(data => {
+            if(data){
+                data.tags.splice(1,0,{id: 0, name: 'Any'})
+                tags.value = data.tags
+                let message = {tags: [data.tags[0].id]}
+                return search_projects(message)
+            }else{
+                return null
+            }
+        })
+        .then(data => {
+            if(data && data.ok){
+                return data.json()
+            }else{
+                return null
+            }
+        })
+        .then(data => { if(data) gallery.value.update_projects(data.projects) })
     })
 </script>
 
