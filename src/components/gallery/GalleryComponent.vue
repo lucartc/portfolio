@@ -1,6 +1,5 @@
 <script setup>
     import { ref } from 'vue'
-    import GalleryGroupComponent from './GalleryGroupComponent.vue';
 
     const current_projects = ref()
     const presentation_groups = ref()
@@ -8,8 +7,15 @@
     const dialog_project = ref()
     const current_gallery_item = ref()
 
-    function change_displayed_gallery_item(src){
-        current_gallery_item.value = src
+    function is_video(item){
+        return item.present_as.match(/video\//)
+    }
+    function is_image(item){
+        return item.present_as.match(/image\//)
+    }
+
+    function change_displayed_gallery_item(media){
+        current_gallery_item.value = media
     }
 
     function update_projects(projects){
@@ -18,7 +24,7 @@
     }
 
     function show_dialog(project){
-        current_gallery_item.value = project.gallery[0].path
+        current_gallery_item.value = project.gallery[0]
         dialog_project.value = project
         let body = document.querySelector('body')
         body.style.overflowY = 'hidden'
@@ -96,7 +102,8 @@
 <template>
     <div class="flex flex-row flex-wrap gap-[20px] w-full min-w-full max-w-full mb-[120px]">
         <div class="rounded-lg flex flex-row w-[calc((100%-4*20px)/5)] min-w-[calc((100%-4*20px)/5)] max-w-[calc((100%-4*20px)/5)] aspect-[3/4] drop-shadow-lg relative" v-for="project in current_projects">
-            <img class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display">
+            <img class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display?.path" v-if="is_image(project.display)">
+            <video class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display?.path" v-if="is_video(project.display)" autoplay muted loop></video>
             <div class="flex opacity-0 hover:opacity-100 hover:backdrop-brightness-[20%] flex-col gap-6 h-full min-h-full max-h-full w-full min-w-full max-w-full p-4 box-border z-[1]">
                 <div class="flex flex-col gap-3">
                     <label class="text-lg font-bold text-white">{{ project.title }}</label>
@@ -154,12 +161,14 @@
                     <div class="flex flex-col w-full min-w-full max-w-full gap-4">
                         <div class="flex flex-row gap-3 min-w-full max-w-full aspect-[3/1]">
                             <div class="h-full min-h-full max-h-full basis-[10%] p-3 box-border flex flex-col items-center gap-3 overflow-y-scroll snap-y rounded-lg bg-[#101010]">
-                                <div v-for="image in dialog_project.gallery" @click="change_displayed_gallery_item(image.path)" class="flex flex-row justify-center w-full min-w-full max-w-full aspect-square bg-[#202020] snap-start rounded-lg drop-shadow-lg">
-                                    <img class="min-h-full min-w-full object-contain rounded-lg" :src="image.path" alt="">
+                                <div v-for="media in dialog_project.gallery" @click="change_displayed_gallery_item(media)" class="flex flex-row justify-center w-full min-w-full max-w-full aspect-square bg-[#202020] snap-start rounded-lg drop-shadow-lg">
+                                    <img class="min-h-full min-w-full object-contain rounded-lg" :src="media.path" alt="" v-if="is_image(media)">
+                                    <video class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-contain absolute" :src="media.path" v-if="is_video(media)" autoplay muted loop></video>
                                 </div>
                             </div>
                             <div class="flex flex-row justify-center items-center h-full min-h-full max-h-full basis-[90%] bg-[#202020] drop-shadow-lg rounded-lg">
-                                <img v-if="dialog_project.gallery.length" :src="current_gallery_item" class="h-full min-h-full max-h-full w-full min-w-full max-w-full object-contain">
+                                <img v-if="dialog_project.gallery.length && is_image(current_gallery_item)" :src="current_gallery_item.path" class="h-full min-h-full max-h-full w-full min-w-full max-w-full object-contain">
+                                <video v-if="dialog_project.gallery.length && is_video(current_gallery_item)" :src="current_gallery_item.path" class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-contain absolute" autoplay muted loop></video>
                             </div>
                         </div>
                     </div>
