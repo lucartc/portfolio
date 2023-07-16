@@ -124,7 +124,7 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-white text-md font-bold">Description</label>
-                    <p class="tet-start text-white text-md max-w-full leading-6 break-all line-clamp-4">{{ project.description }}</p>
+                    <p class="tet-start text-white text-md max-w-full leading-6 line-clamp-4">{{ project.description }}</p>
                 </div>
                 <div @click="show_dialog(project)" class="mt-auto mb-3 hover:brightness-125 whitespace-nowrap text-lg flex flex-row justify-center items-center bg-tag-background min-w-[30%] px-4 py-2 box-border max-w-[100%] rounded-lg drop-shadow-md text-white">See more</div>
             </div>
