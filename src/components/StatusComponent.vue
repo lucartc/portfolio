@@ -17,11 +17,7 @@
     }
 
     function message_status(){
-        if(props.success){
-            return 'status__success'
-        }else{
-            return 'status__error'
-        }
+        return props.success ? 'status__success' : 'status__error'
     }
 
     onMounted(() => {
