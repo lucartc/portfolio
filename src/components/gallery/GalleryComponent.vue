@@ -101,8 +101,8 @@
 </script>
 <template>
     <div class="flex flex-row flex-wrap gap-[20px] w-full min-w-full max-w-full mb-[120px]">
-        <div class="rounded-lg flex flex-row w-[calc((100%-4*20px)/5)] min-w-[calc((100%-4*20px)/5)] max-w-[calc((100%-4*20px)/5)] aspect-[3/4] drop-shadow-lg relative" v-for="project in current_projects">
-            <img class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display?.path" v-if="is_image(project.display)">
+        <div class="flex flex-row w-[calc((100%-4*20px)/5)] min-w-[calc((100%-4*20px)/5)] max-w-[calc((100%-4*20px)/5)] aspect-[3/4] drop-shadow-lg relative" v-for="project in current_projects">
+            <img class="w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display?.path" v-if="is_image(project.display)">
             <video class="rounded-lg w-full min-w-full max-w-full h-full min-h-full max-h-full object-cover absolute" :src="project.display?.path" v-if="is_video(project.display)" autoplay muted loop></video>
             <div class="flex opacity-0 hover:opacity-100 hover:backdrop-brightness-[20%] flex-col gap-6 h-full min-h-full max-h-full w-full min-w-full max-w-full p-4 box-border z-[1] overflow-y-auto">
                 <div class="flex flex-col gap-3">
